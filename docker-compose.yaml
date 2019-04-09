@@ -1,5 +1,10 @@
 version: '2'
 services:
   debmirror:
-    build: .
-    image: debmirror
+    image: swoopla/debmirror
+    read_only: true
+    env_file: .env
+    volumes:
+      - ./run/data/debmirror_debmirror:/debmirror:rw
+      - ./run/log/debmirror_log_debmirror:/log/debmirror:rw
+
