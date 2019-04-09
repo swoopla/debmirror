@@ -1,4 +1,4 @@
-FROM debian-slim:latest
+FROM debian:buster-slim
 
 LABEL MAINTAINER "Swoopla <p.vibet@gmail.com>"
 
@@ -12,11 +12,10 @@ ENV \
   DIST="stretch" \
   SECTION="main contrib non-free" \
   ARCH="i386,amd64" \
-  DEBUGFILE="/tmp/debmirror-debug.log" \
-  METHOD="https"
+  METHOD="https" \
   MIRRORDIR="/debmirror" \
   CONFDIR="/status" \
-  DEBUGFILE="debmirror-debug.log"
+  DEBUGFILE="/log/debmirror/debug.log"
 
 RUN \
   apt-get update && apt-get install -o Dpkg::Options::=--force-confdef -y debmirror xz-utils apt-transport-https && \
