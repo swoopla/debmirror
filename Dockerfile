@@ -1,12 +1,19 @@
-FROM ubuntu:latest
+FROM debian-slim:latest
 
-MAINTAINER Matt Pays matt.pays@fasthosts.com
+LABEL MAINTAINER "Swoopla <p.vibet@gmail.com>"
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 COPY files /
 
 ENV \
+  SOURCE_SRV="ftp.debian.org" \
+  SOURCE_DIR=/ \
+  DIST="stretch" \
+  SECTION="main contrib non-free" \
+  ARCH="i386,amd64" \
+  DEBUGFILE="/tmp/debmirror-debug.log" \
+  METHOD="https"
   MIRRORDIR="/debmirror" \
   CONFDIR="/status" \
   DEBUGFILE="debmirror-debug.log"
